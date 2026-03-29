@@ -1,6 +1,6 @@
 <?php
 function nmh_acf_init() {
-    if ( ! class_exists( 'ACF' ) ) {
+    if ( ! function_exists( 'acf' ) ) {
         return;
     }
     
@@ -25,7 +25,7 @@ function nmh_acf_init() {
 add_action( 'acf/init', 'nmh_acf_init' );
 
 function nmh_acf_hide_admin() {
-    if ( ! class_exists( 'ACF' ) ) {
+    if ( ! function_exists( 'acf' ) ) {
         return;
     }
     
@@ -37,47 +37,34 @@ function nmh_acf_hide_admin() {
 }
 add_action( 'init', 'nmh_acf_hide_admin' );
 
-function nmh_register_content_slot( $slug, $title, $fields = array() ) {
-    if ( ! class_exists( 'ACF' ) ) {
-        return false;
+function nmh_get_acf_field( $field_name, $default = '', $post_id = null ) {
+    if ( ! function_exists( 'acf' ) || ! function_exists( 'get_field' ) ) {
+        return $default;
     }
     
-    $field_group = array(
-        'key'                   => 'group_nmh_slot_' . sanitize_title( $slug ),
-        'title'                 => $title,
-        'fields'                => $fields,
-        'location'              => array(
-            array(
-                array(
-                    'param'    => 'post_type',
-                    'operator' => '==',
-                    'value'    => 'post',
-                ),
-            ),
-        ),
-        'menu_order'            => 0,
-        'position'              => 'normal',
-        'style'                 => 'default',
-        'label_placement'       => 'top',
-        'instruction_placement' => 'label',
-        'hide_on_screen'        => '',
-    );
-    
-    return $field_group;
-}
-
-function nmh_get_acf_field( $field_name, $default = '' ) {
-    if ( function_exists( 'get_field' ) ) {
-        $value = get_field( $field_name );
-        return $value !== false ? $value : $default;
+    $front_page_id = get_option( 'page_on_front' );
+    if ( ! $post_id && $front_page_id ) {
+        $post_id = $front_page_id;
     }
-    return $default;
+    
+    if ( ! $post_id ) {
+        return $default;
+    }
+    
+    $value = get_field( $field_name, $post_id );
+    
+    if ( $value === false || $value === null || $value === '' ) {
+        return $default;
+    }
+    
+    return $value;
 }
 
 function nmh_get_acf_option( $option_name, $default = '' ) {
-    if ( function_exists( 'get_field' ) ) {
-        $value = get_field( $option_name, 'option' );
-        return $value !== false ? $value : $default;
+    if ( ! function_exists( 'get_field' ) ) {
+        return $default;
     }
-    return $default;
+    
+    $value = get_field( $option_name, 'option' );
+    return $value !== false ? $value : $default;
 }

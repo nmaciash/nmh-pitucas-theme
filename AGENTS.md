@@ -1,169 +1,228 @@
-# 🧠 TASK: WordPress Theme Scaffolding – CustomBuilder Core Standard
+# 🧠 AGENTS.md - NMH Pitucas Theme
 
-Actúa como un Desarrollador Senior de WordPress y Arquitecto de Sistemas. Tu objetivo es generar la estructura base de un tema WordPress profesional llamado "NMH Pitucas Theme", siguiendo estándares modernos, optimizado para ACF, preparado para automatización con Python, y alineado con un sistema escalable tipo "Core Standard".
+Actúa como un Desarrollador Senior de WordPress. Este documento establece las reglas y estándares para trabajar en el proyecto **NMH Pitucas Theme** (Ecommerce de moda femenina).
 
-## 1. ESPECIFICACIONES GENERALES
+---
 
-- **Nombre del tema:** NMH Pitucas Theme
-- **Prefijo obligatorio de funciones:** `nmh_`
-- **Arquitectura:** Modular, escalable y desacoplada
-- **Seguridad (obligatoria en outputs):**
-  - `esc_html()`
-  - `esc_attr()`
-  - `esc_url()`
-  - `absint()`
-- **Compatibilidad:**
-  - ACF (Advanced Custom Fields)
-  - Elementor (modo optimizado / silenciado)
-  - Automatización externa con Python
-- **Restricciones:**
-  - NO modificar `.gitignore` ni `sftp.json`
-  - Código limpio, comentado y profesional
+## 📋 Reglas Generales
 
-## 2. ESTRUCTURA DE DIRECTORIOS
+| Regla | Descripción |
+|-------|-------------|
+| **CSS Inline** | PROHIBIDO. Todo CSS en archivos `.css` dedicados |
+| **JS Inline** | PROHIBIDO. Todo JS en archivos `.js` dedicados |
+| **Prefijo Funciones** | Usar siempre `nmh_` |
+| **Debug** | NO usar `console.log()`, `var_dump()` en producción |
+| **Rutas** | Usar siempre `get_template_directory_uri()` |
+| **Seguridad** | Sanitizar: `esc_html()`, `esc_attr()`, `esc_url()` |
 
-Crea (o simula) la siguiente estructura:
+---
+
+## 📁 Estructura del Proyecto
 
 ```
-/assets/
-    /css/
-    /js/
-    /img/
-/inc/
+nmh-pitucas-theme/
+├── assets/
+│   ├── css/main.css           # Estilos principales
+│   ├── js/
+│   │   ├── main.js           # JS principal (logo dinámico, sticky header)
+│   │   └── pitucas-animations.js  # Animaciones GSAP
+│   └── images/
+│       ├── logo-black.png    # Logo para fondos claros
+│       └── logo-white.png    # Logo para fondos oscuros
+├── inc/
+│   ├── acf-loader.php       # Configuración ACF
+│   ├── elementor-cleaner.php # Silenciamiento Elementor
+│   └── env-loader.php        # Carga de variables .env
+├── front-page.php
+├── header.php
+├── footer.php
+├── index.php
+├── functions.php
+├── style.css
+├── README.md
+└── AGENTS.md
 ```
 
-## 3. ARCHIVOS BASE (GENERAR CONTENIDO COMPLETO)
+---
 
-### style.css
-- Cabecera WordPress:
-  - Theme Name: NMH Pitucas Theme
-  - Description: Custom theme profesional optimizado para ACF y automatización
-  - Author: (placeholder)
-  - Version: 1.0.0
+## 🎨 CSS (assets/css/main.css)
 
-### index.php
-- Archivo silencioso por seguridad (mínimo código)
+- **PROHIBIDO** usar etiquetas `<style>` en archivos PHP/HTML
+- **PROHIBIDO** atributos `style=""` inline
+- Usar variables CSS para colores, fuentes, spacing
+- Antes de añadir estilos nuevos, buscar en el archivo con `grep`
 
-### header.php
-- HTML5 completo
-- `wp_head()`
-- Apertura de `<body>` con `body_class()`
+---
 
-### footer.php
-- Cierre de estructura
-- `wp_footer()`
-- Área de créditos
+## 🔧 JavaScript
 
-### front-page.php
-- Loop básico
-- `get_header()` y `get_footer()`
+### jQuery
+```javascript
+jQuery(document).ready(function($) {
+    // Tu código aquí
+});
+```
 
-## 4. FUNCTIONS.PHP (CORE DEL SISTEMA)
+### GSAP
+- Usar `transform` en lugar de propiedades de posición
+- Animaciones scroll-trigger:
+```javascript
+toggleActions: 'play none none reverse'
+```
+- Cargar solo en front-page
 
-### Reglas obligatorias:
+### Variables JS
+- Usar `wp_localize_script()` en `functions.php`
+- NO hardcodear variables en JS
 
-1. **Carga temprana de entorno:**
+---
+
+## ⚙️ WordPress
+
+### functions.php
 ```php
-require_once get_template_directory() . '/inc/env-loader.php';
-nmh_load_env();
+// Carga assets
+wp_enqueue_style('nmh-main-style', ...);
+wp_enqueue_script('nmh-main-script', ...);
+
+// Solo front-page
+if (is_front_page()) {
+    wp_enqueue_script('gsap', ...);
+    wp_enqueue_script('pitucas-animations', ...);
+}
 ```
 
-2. **Theme Support:**
-   - `title-tag`
-   - `post-thumbnails`
-   - `html5`
-   - `customize-selective-refresh-widgets`
+### ACF - Contenido Dinámico
+**IMPORTANTE:** Todo el contenido de las páginas debe ser editable mediante ACF Free.
 
-3. **Registro de menús:**
-   - Header
-   - Footer
+#### Estructura de Campos ACF
+Cada página (especialmente front-page.php) debe organizar sus campos en **pestañas horizontales (tabs)**, una por cada sección de la página. Esta organización permite al cliente editar todo el contenido de forma intuitiva.
 
-4. **Sistema automático de includes:**
-   - Cargar todos los archivos dentro de `/inc/`
+#### Cómo crear campos ACF
+1. **Archivo de definición:** Crear `inc/acf-fields.php` con la función `acf_add_local_field_group()`
+2. **Usar tabs para organizar:** Cada pestaña representa una sección de la página
+3. **Valores por defecto:** Siempre incluir valores por defecto para que el diseño no se rompa si no hay contenido
 
-5. **Assets:**
-   - Encolar `assets/css/main.css`
-   - Encolar `assets/js/main.js`
-
-## 5. SISTEMA DE ENTORNO (inc/env-loader.php)
-
-- **Función:** `nmh_load_env()`
-- Busca `.env` en la raíz del tema
-- Parsea ignorando comentarios `#`
-- Carga variables con:
-  - `putenv()`
-  - `$_ENV`
-- Si no existe → fallo silencioso
-
-## 6. PIPELINE DE ASSETS (inc/enqueue.php)
-
-### Crear archivos físicos:
-- `/assets/css/main.css`
-- `/assets/js/main.js`
-- `/assets/js/animations.js`
-
-### Requisitos:
-- Encolar `style.css`
-- Encolar GSAP + ScrollTrigger (CDN Cloudflare)
-- **Dependencias:**
-  - `animations.js` → `gsap`
-  - `main.js` → `jquery`, `gsap`
-- Versionado con `filemtime`
-- Usar `get_template_directory_uri()`
-
-## 7. SISTEMA ACF AVANZADO (inc/acf-loader.php)
-
-- Detectar si ACF está activo
-- Preparar estructura para:
-  - Registro de Field Groups vía PHP
-  - Carga de JSON local (opcional)
-
-### Control de visibilidad del admin:
-
+#### Ejemplo de estructura con pestañas
 ```php
-getenv('ACF_SHOW_ADMIN')
+acf_add_local_field_group(array(
+    'key' => 'group_front_page',
+    'title' => 'Contenido de Página de Inicio',
+    'fields' => array(
+        // Pestaña 1: Hero Section
+        array(
+            'key' => 'field_hero_tab',
+            'label' => 'Hero Section',
+            'name' => 'hero_tab',
+            'type' => 'tab',
+            'placement' => 'top',
+        ),
+        array(
+            'key' => 'field_hero_image',
+            'label' => 'Imagen Principal',
+            'name' => 'hero_image',
+            'type' => 'image',
+            'return_format' => 'url',
+        ),
+        // ... más campos del hero
+        
+        // Pestaña 2: New In Section
+        array(
+            'key' => 'field_newin_tab',
+            'label' => 'New In Section',
+            'name' => 'newin_tab',
+            'type' => 'tab',
+            'placement' => 'top',
+        ),
+        // ... campos de New In
+    ),
+    'location' => array(
+        array(
+            array(
+                'param' => 'page_type',
+                'operator' => '==',
+                'value' => 'front_page',
+            ),
+        ),
+    ),
+));
 ```
 
-- `'true'` → mostrar UI
-- `'false'` o no definido → ocultar UI
-
-### Extra:
-- Preparar función para registrar "Slots" dinámicos de contenido
-
-## 8. OPTIMIZACIÓN ELEMENTOR (inc/elementor-cleaner.php)
-
-- Detectar si la página NO está editada con Elementor
-- Si no lo está:
-  - `wp_dequeue_style`
-  - `wp_dequeue_script`
-- **Eliminar:**
-  - Estilos globales
-  - Google Fonts por defecto
-
-## 9. ENTORNO PYTHON
-
-### requirements.txt
-
-Incluir:
-
-```txt
-requests
-python-dotenv
-pandas
+#### Obtener valores en el template
+```php
+// Usar la función helper del tema
+$hero_image = nmh_get_acf_field('hero_image', get_template_directory_uri() . '/assets/images/default.jpg');
+$hero_title = nmh_get_acf_field('hero_title', 'Título por defecto');
 ```
 
-## 10. REGLAS DE EJECUCIÓN
+#### Reglas ACF
+- **SIEMPRE** usar `placement => 'top'` en los tabs (pestañas horizontales)
+- **NUNCA** usar vertical tabs (`placement => 'left'`)
+- Incluir `return_format => 'url'` en campos de imagen
+- Usar `default_value` en todos los campos de texto
+- Verificar que ACF existe: `if (function_exists('acf'))`
+- NO usar acf_add_local_field_group fuera de inc/acf-fields.php
 
-1. Generar primero el árbol de directorios visual
-2. Crear los archivos en orden de dependencias
-3. Mostrar cada archivo en bloques de código con su ruta
-4. No omitir ningún archivo
-5. No añadir tareas extra
+#### Funciones helper disponibles
+```php
+// Obtener campo de la página actual o front page
+nmh_get_acf_field('nombre_campo', 'valor_por_defecto');
 
-## 11. FINALIZACIÓN
-
-Al terminar, detener ejecución y mostrar exactamente:
-
+// Ejemplo de uso en front-page.php
+$hero_title = nmh_get_acf_field('hero_title', 'Título por defecto');
 ```
-Estructura CORE completada con Gestión de Secretos. Listo para el primer commit
+
+#### ACF Free vs Pro
+- **Usar solo ACF Free:** No usar características de ACF Pro (repeater, flexible content, gallery)
+- Si se necesita repetir contenido, crear campos individuales (ej: product_1, product_2)
+
+### Elementor
+- El archivo `inc/elementor-cleaner.php` silenciamos estilos cuando NO está en modo edición
+- NO eliminar, mantener para rendimiento
+
+---
+
+## 🔍 Chequeo Pre-Deploy
+
+Antes de subir al servidor, verificar:
+
+```bash
+# Buscar CSS inline
+grep -r "style=" --include="*.php" --include="*.html"
+
+# Buscar console.log
+grep -r "console.log" --include="*.js"
 ```
+
+- [ ] No hay CSS/JS inline
+- [ ] No hay console.log() o var_dump()
+- [ ] Logo images existen en assets/images/
+- [ ] _stubs no está en el servidor
+- [ ] Assets cargan correctamente
+
+---
+
+## 📝 Notas Importantes
+
+- **Fuentes:** Inter (principal/sans) + Cormorant Garamond (secundaria/serif)
+- **GSAP:** 3.12.5 via CDN
+- **jQuery:** Version de WordPress
+- **Colores del tema:**
+  - Background: #FAF8F5
+  - Primary: #2C2825
+  - Secondary: #F0EBE3
+  - Border: #E5DDD3
+
+---
+
+## 🚀 Workflow
+
+1. **Analizar** estructura con `ls` y `grep`
+2. **Planificar** cambios necesarios
+3. **Ejecutar** modificaciones en archivos correspondientes
+4. **Limpiar** código de prueba/comentado
+5. **Verificar** con grep antes de finalizar
+
+---
+
+*Última actualización: Marzo 2026*
