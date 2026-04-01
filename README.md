@@ -147,14 +147,13 @@ ls -laR
   - Secondary: #F0EBE3
   - Border: #E5DDD3
 
-## 📋 ACF - Contenido Dinámico
-
 Todo el contenido de las páginas debe incorporarse mediante ACF Free en formato de pestañas horizontales:
 
-1. Crear `inc/acf-fields.php` con `acf_add_local_field_group()`
-2. Usar **pestañas horizontales** (`placement => 'top'`) para cada sección
-3. Incluir valores por defecto en todos los campos
-4. Usar función helper `nmh_get_acf_field('campo', 'valor_por_defecto')`
+1.  Crear `inc/acf-fields.php` con `acf_add_local_field_group()`
+2.  Usar **pestañas horizontales** (`placement => 'top'`) para cada sección
+3.  Incluir valores por defecto en todos los campos
+4.  Usar función helper `nmh_get_acf_field('campo', 'valor_por_defecto')`
+5.  **Footer**: Se gestiona exclusivamente desde la página **Footer**, usando la función helper `nmh_get_footer_field('campo', 'valor_por_defecto')`.
 
 ---
 

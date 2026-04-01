@@ -10,40 +10,40 @@ get_header(); ?>
 
     <!-- Hero Section -->
     <?php
-    $hero_image = nmh_get_acf_field( 'hero_image', get_template_directory_uri() . '/assets/images/hero-new-collection.webp' );
-    $hero_subtitle = nmh_get_acf_field( 'hero_subtitle', 'New Collection' );
-    $hero_title = nmh_get_acf_field( 'hero_title', 'Elegancia que habla por ti' );
-    $hero_description = nmh_get_acf_field( 'hero_description', 'Descubre piezas que definen tu estilo con sofisticación natural y confianza' );
-    $hero_button_text = nmh_get_acf_field( 'hero_button_text', 'Descubrir ahora' );
-    $hero_button_url = nmh_get_acf_field( 'hero_button_url', get_permalink( wc_get_page_id( 'shop' ) ) );
+    $hero_image = nmh_get_acf_field('hero_image', get_template_directory_uri() . '/assets/images/hero-new-collection.webp');
+    $hero_subtitle = nmh_get_acf_field('hero_subtitle', 'New Collection');
+    $hero_title = nmh_get_acf_field('hero_title', 'Elegancia que habla por ti');
+    $hero_description = nmh_get_acf_field('hero_description', 'Descubre piezas que definen tu estilo con sofisticación natural y confianza');
+    $hero_button_text = nmh_get_acf_field('hero_button_text', 'Descubrir ahora');
+    $hero_button_url = nmh_get_acf_field('hero_button_url', get_permalink(wc_get_page_id('shop')));
     ?>
     <section class="hero-section gsap-fade-in">
         <div class="hero-image">
-            <img src="<?php echo esc_url( $hero_image ); ?>" alt="<?php echo esc_attr( $hero_title ); ?>">
+            <img src="<?php echo esc_url($hero_image); ?>" alt="<?php echo esc_attr($hero_title); ?>">
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <p class="hero-subtitle"><?php echo esc_html( $hero_subtitle ); ?></p>
-            <h2 class="hero-title"><?php echo esc_html( $hero_title ); ?></h2>
-            <p class="hero-description"><?php echo esc_html( $hero_description ); ?></p>
-            <a href="<?php echo esc_url( $hero_button_url ); ?>" class="hero-btn">
-                <?php echo esc_html( $hero_button_text ); ?>
+            <p class="hero-subtitle"><?php echo esc_html($hero_subtitle); ?></p>
+            <h2 class="hero-title"><?php echo esc_html($hero_title); ?></h2>
+            <p class="hero-description"><?php echo esc_html($hero_description); ?></p>
+            <a href="<?php echo esc_url($hero_button_url); ?>" class="hero-btn">
+                <?php echo esc_html($hero_button_text); ?>
             </a>
         </div>
     </section>
 
     <!-- New In Section -->
     <?php
-    $newin_subtitle = nmh_get_acf_field( 'newin_subtitle', 'Lo Último' );
-    $newin_title = nmh_get_acf_field( 'newin_title', 'New In' );
-    $newin_button_text = nmh_get_acf_field( 'newin_button_text', 'Ver todo' );
-    $newin_button_url = nmh_get_acf_field( 'newin_button_url', get_permalink( wc_get_page_id( 'shop' ) ) );
+    $newin_subtitle = nmh_get_acf_field('newin_subtitle', 'Lo Último');
+    $newin_title = nmh_get_acf_field('newin_title', 'New In');
+    $newin_button_text = nmh_get_acf_field('newin_button_text', 'Ver todo');
+    $newin_button_url = nmh_get_acf_field('newin_button_url', get_permalink(wc_get_page_id('shop')));
     ?>
     <section class="new-in-section section-padding">
         <div class="container">
             <div class="section-header newin-header">
-                <span class="newin-subtitle"><?php echo esc_html( $newin_subtitle ); ?></span>
-                <h2 class="section-title newin-title"><?php echo esc_html( $newin_title ); ?></h2>
+                <span class="newin-subtitle"><?php echo esc_html($newin_subtitle); ?></span>
+                <h2 class="section-title newin-title"><?php echo esc_html($newin_title); ?></h2>
             </div>
 
             <div class="products-grid gsap-stagger">
@@ -64,7 +64,7 @@ get_header(); ?>
                         <div class="product-card gsap-fade-up">
                             <div class="product-image">
                                 <a href="<?php the_permalink(); ?>">
-                                    <?php echo get_the_post_thumbnail( get_the_ID(), 'full' ); ?>
+                                    <?php echo get_the_post_thumbnail(get_the_ID(), 'full'); ?>
                                 </a>
                             </div>
                             <div class="product-info">
@@ -82,8 +82,8 @@ get_header(); ?>
             </div>
 
             <div class="newin-bottom-cta">
-                <a href="<?php echo esc_url( $newin_button_url ); ?>" class="hero-btn">
-                    <?php echo esc_html( $newin_button_text ); ?>
+                <a href="<?php echo esc_url($newin_button_url); ?>" class="hero-btn">
+                    <?php echo esc_html($newin_button_text); ?>
                 </a>
             </div>
         </div>
@@ -91,30 +91,30 @@ get_header(); ?>
 
     <!-- Nuestra Historia Section -->
     <?php
-    $historia_label = nmh_get_acf_field( 'historia_label', 'Nuestra historia' );
-    $historia_title = nmh_get_acf_field( 'historia_title', 'Moda con alma, estilo con propósito' );
-    $historia_paragraph1 = nmh_get_acf_field( 'historia_paragraph1', 'Pitucas nació de la pasión por vestir a la mujer contemporánea con piezas que hablan de ella: su confianza, su elegancia natural y su forma única de moverse por el mundo.' );
-    $historia_paragraph2 = nmh_get_acf_field( 'historia_paragraph2', 'Cada prenda está pensada para acompañar tus momentos, desde los más sencillos hasta los más especiales. Tejidos nobles, cortes cuidados y una paleta que respira serenidad. Porque el verdadero lujo es sentirte tú.' );
-    $historia_button_text = nmh_get_acf_field( 'historia_button_text', 'Conoce la marca' );
-    $historia_button_url = nmh_get_acf_field( 'historia_button_url', '#' );
+    $historia_label = nmh_get_acf_field('historia_label', 'Nuestra historia');
+    $historia_title = nmh_get_acf_field('historia_title', 'Moda con alma, estilo con propósito');
+    $historia_paragraph1 = nmh_get_acf_field('historia_paragraph1', 'Pitucas nació de la pasión por vestir a la mujer contemporánea con piezas que hablan de ella: su confianza, su elegancia natural y su forma única de moverse por el mundo.');
+    $historia_paragraph2 = nmh_get_acf_field('historia_paragraph2', 'Cada prenda está pensada para acompañar tus momentos, desde los más sencillos hasta los más especiales. Tejidos nobles, cortes cuidados y una paleta que respira serenidad. Porque el verdadero lujo es sentirte tú.');
+    $historia_button_text = nmh_get_acf_field('historia_button_text', 'Conoce la marca');
+    $historia_button_url = nmh_get_acf_field('historia_button_url', '#');
     ?>
     <section class="lifestyle-section gsap-parallax">
         <div class="container-fluid">
             <div class="lifestyle-grid">
                 <div class="lifestyle-content">
                     <div class="content-wrapper">
-                        <span class="section-label"><?php echo esc_html( strtoupper( $historia_label ) ); ?></span>
+                        <span class="section-label"><?php echo esc_html(strtoupper($historia_label)); ?></span>
                         <h2 class="lifestyle-title gsap-split-text">
-                            <?php echo esc_html( $historia_title ); ?>
+                            <?php echo esc_html($historia_title); ?>
                         </h2>
                         <p class="lifestyle-description">
-                            <?php echo esc_html( $historia_paragraph1 ); ?>
+                            <?php echo esc_html($historia_paragraph1); ?>
                         </p>
                         <p class="lifestyle-description">
-                            <?php echo esc_html( $historia_paragraph2 ); ?>
+                            <?php echo esc_html($historia_paragraph2); ?>
                         </p>
-                        <a href="<?php echo esc_url( $historia_button_url ); ?>" class="btn-secondary gsap-scale">
-                            <?php echo esc_html( strtoupper( $historia_button_text ) ); ?>
+                        <a href="<?php echo esc_url($historia_button_url); ?>" class="btn-secondary gsap-scale">
+                            <?php echo esc_html(strtoupper($historia_button_text)); ?>
                         </a>
                     </div>
                 </div>
@@ -128,44 +128,44 @@ get_header(); ?>
 
     <!-- Categories Section -->
     <?php
-    $cat1_name = nmh_get_acf_field( 'cat1_name', 'Ropa' );
-    $cat1_url = nmh_get_acf_field( 'cat1_url', '#' );
-    $cat2_name = nmh_get_acf_field( 'cat2_name', 'Complementos' );
-    $cat2_url = nmh_get_acf_field( 'cat2_url', '#' );
-    $cat3_name = nmh_get_acf_field( 'cat3_name', 'Calzado' );
-    $cat3_url = nmh_get_acf_field( 'cat3_url', '#' );
+    $cat1_name = nmh_get_acf_field('cat1_name', 'Ropa');
+    $cat1_url = nmh_get_acf_field('cat1_url', '#');
+    $cat2_name = nmh_get_acf_field('cat2_name', 'Complementos');
+    $cat2_url = nmh_get_acf_field('cat2_url', '#');
+    $cat3_name = nmh_get_acf_field('cat3_name', 'Calzado');
+    $cat3_url = nmh_get_acf_field('cat3_url', '#');
     ?>
     <section class="categories-section section-padding">
         <div class="container">
             <div class="categories-grid gsap-stagger">
                 <div class="category-card gsap-hover">
-                    <a href="<?php echo esc_url( $cat1_url ); ?>" class="category-link">
+                    <a href="<?php echo esc_url($cat1_url); ?>" class="category-link">
                         <div class="category-image">
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/cat01.webp"
-                                alt="<?php echo esc_attr( $cat1_name ); ?>">
+                                alt="<?php echo esc_attr($cat1_name); ?>">
                             <div class="category-overlay"></div>
                         </div>
-                        <h3 class="category-name"><?php echo esc_html( $cat1_name ); ?></h3>
+                        <h3 class="category-name"><?php echo esc_html($cat1_name); ?></h3>
                     </a>
                 </div>
                 <div class="category-card gsap-hover">
-                    <a href="<?php echo esc_url( $cat2_url ); ?>" class="category-link">
+                    <a href="<?php echo esc_url($cat2_url); ?>" class="category-link">
                         <div class="category-image">
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/cat02.webp"
-                                alt="<?php echo esc_attr( $cat2_name ); ?>">
+                                alt="<?php echo esc_attr($cat2_name); ?>">
                             <div class="category-overlay"></div>
                         </div>
-                        <h3 class="category-name"><?php echo esc_html( $cat2_name ); ?></h3>
+                        <h3 class="category-name"><?php echo esc_html($cat2_name); ?></h3>
                     </a>
                 </div>
                 <div class="category-card gsap-hover">
-                    <a href="<?php echo esc_url( $cat3_url ); ?>" class="category-link">
+                    <a href="<?php echo esc_url($cat3_url); ?>" class="category-link">
                         <div class="category-image">
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/cat03.webp"
-                                alt="<?php echo esc_attr( $cat3_name ); ?>">
+                                alt="<?php echo esc_attr($cat3_name); ?>">
                             <div class="category-overlay"></div>
                         </div>
-                        <h3 class="category-name"><?php echo esc_html( $cat3_name ); ?></h3>
+                        <h3 class="category-name"><?php echo esc_html($cat3_name); ?></h3>
                     </a>
                 </div>
             </div>
@@ -173,7 +173,7 @@ get_header(); ?>
     </section>
 
     <!-- Shop the Look Section -->
-    <section class="shop-look-section section-padding">
+    <section class="shop-look-section section-padding hide">
         <div class="container">
             <h2 class="section-title centered">Shop the Look</h2>
             <p class="section-subtitle">Looks completos seleccionados por nuestro equipo de estilistas</p>
@@ -220,7 +220,7 @@ get_header(); ?>
             </div>
             <div class="urban-elegance-content">
                 <h2 class="urban-title gsap-split-text">Urban Elegance</h2>
-                <p class="urban-subtitle">CAMPAÑA OTOÑO/INVIERNO</p>
+                <p class="urban-subtitle">CAMPAÑA PRIMAVERA 2026</p>
                 <a href="<?php echo esc_url(get_permalink(wc_get_page_id('shop'))); ?>" class="btn-white gsap-scale">
                     EXPLORAR
                 </a>
@@ -229,7 +229,7 @@ get_header(); ?>
     </section>
 
     <!-- Magazine Section -->
-    <section class="magazine-section section-padding">
+    <section class="magazine-section section-padding hide">
         <div class="container">
             <h2 class="section-title centered">#PitucasMuse</h2>
             <p class="section-subtitle">Inspiración y estilo en nuestra comunidad</p>

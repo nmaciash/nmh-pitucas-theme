@@ -305,3 +305,192 @@ acf_add_local_field_group( array(
     'active' => 1,
     'description' => 'Campos para la sección de Categorías de la página de inicio',
 ) );
+
+acf_add_local_field_group( array(
+    'key' => 'group_footer_section',
+    'title' => 'Footer Section',
+    'fields' => array(
+        array(
+            'key' => 'field_footer_tabs',
+            'label' => 'Footer',
+            'name' => 'footer_tabs',
+            'type' => 'tab',
+            'placement' => 'top',
+            'endpoint' => 0,
+        ),
+        array(
+            'key' => 'field_footer_description',
+            'label' => 'Descripción del Footer',
+            'name' => 'footer_description',
+            'type' => 'textarea',
+            'rows' => 3,
+            'default_value' => 'Moda femenina contemporánea con alma y propósito. Elegancia que habla por ti.',
+            'placeholder' => 'Ej: Moda femenina contemporánea...',
+        ),
+        array(
+            'key' => 'field_footer_social_tabs',
+            'label' => 'Redes Sociales',
+            'name' => 'footer_social_tabs',
+            'type' => 'tab',
+            'placement' => 'top',
+            'endpoint' => 0,
+        ),
+        array(
+            'key' => 'field_footer_social_instagram',
+            'label' => 'Instagram URL',
+            'name' => 'footer_social_instagram',
+            'type' => 'url',
+            'default_value' => 'https://instagram.com/',
+        ),
+        array(
+            'key' => 'field_footer_social_pinterest',
+            'label' => 'Pinterest URL',
+            'name' => 'footer_social_pinterest',
+            'type' => 'url',
+            'default_value' => 'https://pinterest.com/',
+        ),
+        array(
+            'key' => 'field_footer_social_tiktok',
+            'label' => 'TikTok URL',
+            'name' => 'footer_social_tiktok',
+            'type' => 'url',
+            'default_value' => 'https://tiktok.com/',
+        ),
+    ),
+    'location' => array(
+        array(
+            array(
+                'param' => 'page_template',
+                'operator' => '==',
+                'value' => 'template-footer.php',
+            ),
+        ),
+    ),
+    'menu_order' => 10,
+    'position' => 'normal',
+    'style' => 'default',
+    'label_placement' => 'top',
+    'instruction_placement' => 'label',
+    'hide_on_screen' => '',
+    'active' => 1,
+    'description' => 'Campos para el pie de página (Footer)',
+) );
+
+acf_add_local_field_group( array(
+    'key' => 'group_contact_page',
+    'title' => 'Página de Contacto',
+    'fields' => array(
+        // Pestaña: Información
+        array(
+            'key' => 'field_contact_info_tab',
+            'label' => 'Información de Contacto',
+            'name' => 'contact_info_tab',
+            'type' => 'tab',
+            'placement' => 'top',
+        ),
+        array(
+            'key' => 'field_contact_subtitle',
+            'label' => 'Subtítulo Contacto',
+            'name' => 'contact_subtitle',
+            'type' => 'text',
+            'default_value' => 'Contacto',
+        ),
+        array(
+            'key' => 'field_contact_title',
+            'label' => 'Título Contacto',
+            'name' => 'contact_title',
+            'type' => 'text',
+            'default_value' => 'Estamos aquí para ayudarte',
+        ),
+        array(
+            'key' => 'field_contact_description',
+            'label' => 'Descripción Corta',
+            'name' => 'contact_description',
+            'type' => 'textarea',
+            'rows' => 3,
+            'default_value' => '¿Tienes alguna duda sobre tu pedido o necesitas asesoramiento? Escríbenos y te responderemos lo antes posible.',
+        ),
+        array(
+            'key' => 'field_contact_address',
+            'label' => 'Dirección Física',
+            'name' => 'contact_address',
+            'type' => 'textarea',
+            'rows' => 2,
+            'default_value' => 'Calle Principal 123, 28001 Madrid',
+        ),
+        array(
+            'key' => 'field_contact_phone',
+            'label' => 'Teléfono',
+            'name' => 'contact_phone',
+            'type' => 'text',
+            'default_value' => '+34 912 345 678',
+        ),
+        array(
+            'key' => 'field_contact_email',
+            'label' => 'Email',
+            'name' => 'contact_email',
+            'type' => 'email',
+            'default_value' => 'hola@pitucasmoda.com',
+        ),
+        array(
+            'key' => 'field_contact_hours',
+            'label' => 'Horario de Atención',
+            'name' => 'contact_hours',
+            'type' => 'textarea',
+            'rows' => 2,
+            'default_value' => 'Lunes a Viernes: 10:00 - 20:00 / Sábados: 10:00 - 14:00',
+        ),
+        
+        // Pestaña: Formulario
+        array(
+            'key' => 'field_contact_form_tab',
+            'label' => 'Formulario',
+            'name' => 'contact_form_tab',
+            'type' => 'tab',
+            'placement' => 'top',
+        ),
+        array(
+            'key' => 'field_contact_form_shortcode',
+            'label' => 'Shortcode del Formulario',
+            'name' => 'contact_form_shortcode',
+            'type' => 'text',
+            'instructions' => 'Pega aquí el shortcode de tu plugin de formularios.',
+            'placeholder' => '[my-form-shortcode]',
+            'default_value' => '',
+        ),
+        
+        // Pestaña: Mapa
+        array(
+            'key' => 'field_contact_map_tab',
+            'label' => 'Mapa',
+            'name' => 'contact_map_tab',
+            'type' => 'tab',
+            'placement' => 'top',
+        ),
+        array(
+            'key' => 'field_contact_map_iframe',
+            'label' => 'Código del Mapa (Iframe)',
+            'name' => 'contact_map_iframe',
+            'type' => 'textarea',
+            'instructions' => 'Pega aquí el código <iframe> generado por Google Maps.',
+            'rows' => 5,
+            'default_value' => '',
+        ),
+    ),
+    'location' => array(
+        array(
+            array(
+                'param' => 'page_template',
+                'operator' => '==',
+                'value' => 'page-contacto.php',
+            ),
+        ),
+    ),
+    'menu_order' => 5,
+    'position' => 'normal',
+    'style' => 'default',
+    'label_placement' => 'top',
+    'instruction_placement' => 'label',
+    'hide_on_screen' => '',
+    'active' => 1,
+) );

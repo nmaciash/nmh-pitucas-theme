@@ -68,3 +68,35 @@ function nmh_get_acf_option( $option_name, $default = '' ) {
     $value = get_field( $option_name, 'option' );
     return $value !== false ? $value : $default;
 }
+
+/**
+ * Get ACF field from dedicated 'Footer' page
+ */
+function nmh_get_footer_field( $field_name, $default = '' ) {
+    if ( ! function_exists( 'acf' ) || ! function_exists( 'get_field' ) ) {
+        return $default;
+    }
+    
+    // Find page by template 'template-footer.php'
+    $args = array(
+        'post_type'  => 'page',
+        'meta_key'   => '_wp_page_template',
+        'meta_value' => 'template-footer.php',
+        'posts_per_page' => 1
+    );
+    $footer_pages = get_posts( $args );
+    $footer_page_id = ! empty( $footer_pages ) ? $footer_pages[0]->ID : null;
+    
+    if ( ! $footer_page_id ) {
+        // Fallback to front page for backward compatibility
+        return nmh_get_acf_field( $field_name, $default );
+    }
+    
+    $value = get_field( $field_name, $footer_page_id );
+    
+    if ( $value === false || $value === null || $value === '' ) {
+        return $default;
+    }
+    
+    return $value;
+}

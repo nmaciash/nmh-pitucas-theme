@@ -20,8 +20,11 @@ function nmh_setup() {
     add_theme_support( 'wc-product-gallery-slider' );
 
     register_nav_menus( array(
-        'header-menu' => esc_html__( 'Header Menu', 'nmh-pitucas' ),
-        'footer-menu' => esc_html__( 'Footer Menu', 'nmh-pitucas' ),
+        'header-menu'    => esc_html__( 'Header Menu', 'nmh-pitucas' ),
+        'footer-menu'    => esc_html__( 'Footer Menu Main', 'nmh-pitucas' ),
+        'footer-shop'    => esc_html__( 'Footer - Shop', 'nmh-pitucas' ),
+        'footer-info'    => esc_html__( 'Footer - Información', 'nmh-pitucas' ),
+        'footer-atencion' => esc_html__( 'Footer - Atención al Cliente', 'nmh-pitucas' ),
     ) );
 
     add_image_size( 'pitucas-product', 600, 800, true );

@@ -18,6 +18,10 @@ body {
     padding: 0 20px;
 }
 
+.hide {
+    display: none;
+}
+
 .site-header {
     padding: 20px 0;
     background: var(--color-white);
@@ -124,31 +128,31 @@ body {
     .site-header .container {
         padding: 0 20px;
     }
-    
+
     .header-desktop {
         display: none !important;
     }
-    
+
     .header-mobile {
         display: flex !important;
         align-items: center;
         justify-content: space-between;
     }
-    
+
     .menu-toggle {
         order: 1;
     }
-    
+
     .site-branding-mobile {
         order: 2;
     }
-    
+
     .header-actions {
         order: 3;
         display: flex;
         gap: 12px;
     }
-    
+
     /* Mobile Slide Menu */
     .main-navigation {
         position: fixed;
@@ -163,11 +167,11 @@ body {
         transition: left 0.3s ease;
         box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
     }
-    
+
     .main-navigation.active {
         left: 0;
     }
-    
+
     .main-navigation ul {
         list-style: none;
         margin: 0;
@@ -176,15 +180,15 @@ body {
         flex-direction: column !important;
         gap: 0 !important;
     }
-    
+
     .main-navigation ul li {
         border-bottom: 1px solid var(--color-border);
     }
-    
+
     .main-navigation ul li:last-child {
         border-bottom: none;
     }
-    
+
     .main-navigation a {
         display: block;
         padding: 18px 0;
@@ -202,11 +206,11 @@ body {
     .header-desktop .site-branding .pitucas-logo {
         max-width: 120px;
     }
-    
+
     .header-desktop .desktop-nav ul {
         gap: 25px;
     }
-    
+
     .header-desktop .desktop-nav a {
         font-size: 0.65rem;
     }
@@ -431,31 +435,31 @@ body {
     .site-header .container {
         padding: 0 20px;
     }
-    
+
     .header-desktop {
         display: none !important;
     }
-    
+
     .header-mobile {
         display: flex !important;
         align-items: center;
         justify-content: space-between;
     }
-    
+
     .menu-toggle {
         order: 1;
     }
-    
+
     .site-branding-mobile {
         order: 2;
     }
-    
+
     .header-actions {
         order: 3;
         display: flex;
         gap: 12px;
     }
-    
+
     /* Mobile Slide Menu */
     .main-navigation {
         position: fixed;
@@ -470,25 +474,25 @@ body {
         transition: left 0.3s ease;
         box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
     }
-    
+
     .main-navigation.active {
         left: 0;
     }
-    
+
     .main-navigation ul {
         list-style: none;
         margin: 0;
         padding: 0;
     }
-    
+
     .main-navigation ul li {
         border-bottom: 1px solid var(--color-border);
     }
-    
+
     .main-navigation ul li:last-child {
         border-bottom: none;
     }
-    
+
     .main-navigation a {
         display: block;
         padding: 16px 0;
@@ -508,11 +512,11 @@ body {
     .header-desktop .site-branding .pitucas-logo {
         max-width: 120px;
     }
-    
+
     .header-desktop .desktop-nav ul {
         gap: 25px;
     }
-    
+
     .header-desktop .desktop-nav a {
         font-size: 0.65rem;
     }
@@ -551,15 +555,163 @@ body {
     padding: 40px 0;
 }
 
+/* ============================================
+   FOOTER STYLES
+   ============================================ */
 .site-footer {
-    background: var(--color-primary);
+    background-color: var(--color-primary);
+    color: rgba(255, 255, 255, 0.8);
+    padding: 80px 0 40px;
+    font-family: var(--font-primary);
+}
+
+.footer-content-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 40px;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-brand {
+    font-family: var(--font-secondary);
+    font-size: 2.2rem;
     color: var(--color-white);
-    padding: 30px 0;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    font-weight: 400;
+}
+
+.footer-desc {
+    max-width: 280px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-title {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-white);
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-nav ul li {
+    margin-bottom: 15px;
+}
+
+.footer-nav ul li a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color var(--transition-fast);
+}
+
+.footer-nav ul li a:hover {
+    color: var(--color-white);
+}
+
+.social-section {
+    margin-top: 40px;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+}
+
+.social-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    transition: color var(--transition-fast);
+}
+
+.social-links a:hover {
+    color: var(--color-white);
+}
+
+.footer-kit-digital {
+    padding: 60px 0 20px;
+    text-align: center;
+    border-top: 1px dotted rgba(255, 255, 255, 0.1);
+}
+
+.footer-kit-digital img {
+    max-width: 400px;
+    height: auto;
+    opacity: 0.9;
+    filter: brightness(0.9);
+}
+
+@media (max-width: 640px) {
+    .footer-kit-digital {
+        padding: 40px 0 10px;
+    }
+
+    .footer-kit-digital img {
+        max-width: 280px;
+    }
+}
+
+.footer-bottom {
+    margin-top: 0px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
     text-align: center;
 }
 
-.site-footer a {
-    color: var(--color-white);
+.footer-bottom p {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 1px;
+}
+
+/* Responsive Footer */
+@media (max-width: 1024px) {
+    .footer-content-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 60px 40px;
+    }
+}
+
+@media (max-width: 640px) {
+    .site-footer {
+        padding: 60px 0 30px;
+    }
+
+    .footer-content-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .brand-col {
+        align-items: center;
+    }
+
+    .footer-desc {
+        max-width: 100%;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .footer-bottom {
+        margin-top: 0px;
+    }
 }
 
 /* ==========================================================================
@@ -1416,11 +1568,11 @@ body {
     .lifestyle-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .lifestyle-content {
         order: 1;
     }
-    
+
     .lifestyle-image {
         order: 2;
     }
@@ -1580,4 +1732,140 @@ body:not(.home) .site-header {
     position: relative;
     background: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   CONTACT PAGE STYLES
+   ========================================================================== */
+
+.contact-page {
+    background-color: var(--color-background);
+}
+
+.contact-hero {
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+.contact-hero .container {
+    max-width: 800px;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    margin-top: 40px;
+}
+
+@media (max-width: 991px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.info-title {
+    font-family: var(--font-secondary);
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.info-item p, 
+.info-item a {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.info-item a:hover {
+    color: var(--color-primary);
+}
+
+.contact-form-container {
+    background: var(--color-white);
+    padding: 40px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+}
+
+.form-placeholder {
+    padding: 40px;
+    text-align: center;
+    background: var(--color-muted);
+    color: var(--color-muted-foreground);
+    border: 1px dashed var(--color-muted-foreground);
+}
+
+.contact-map-section {
+    margin-top: 80px;
+    width: 100%;
+}
+
+.map-container {
+    width: 100%;
+    height: 450px;
+    background-color: var(--color-muted);
+}
+
+.map-container iframe {
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+    display: block;
+}
+
+/* Adjustments for CF7 or similar form plugins */
+.form-wrapper input[type="text"],
+.form-wrapper input[type="email"],
+.form-wrapper textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid var(--color-border);
+    background: var(--color-background);
+    font-family: var(--font-primary);
+    font-size: 0.9rem;
+}
+
+.form-wrapper input:focus,
+.form-wrapper textarea:focus {
+    outline: none;
+    border-color: var(--color-muted-foreground);
+}
+
+.form-wrapper input[type="submit"],
+.form-wrapper button {
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+}
+
+.form-wrapper input[type="submit"]:hover,
+.form-wrapper button:hover {
+    background-color: var(--color-muted-foreground);
 }
