@@ -214,7 +214,7 @@ get_header(); ?>
     <section class="urban-elegance-section gsap-parallax-section">
         <div class="urban-elegance-container">
             <div class="urban-elegance-image">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/urban-elegance-bg.jpg"
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/urban-elegance-bg.webp"
                     alt="Urban Elegance">
                 <div class="urban-elegance-overlay"></div>
             </div>

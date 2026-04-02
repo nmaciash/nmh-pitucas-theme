@@ -1016,6 +1016,10 @@ body {
     margin-bottom: var(--spacing-xl);
 }
 
+.shop-hero .section-header {
+    margin-bottom: 0;
+}
+
 .newin-header {
     flex-direction: column;
     gap: 8px;
@@ -1207,6 +1211,10 @@ body {
     overflow: hidden;
     cursor: pointer;
     border-radius: var(--radius-md);
+}
+
+.trp-ls-language-name {
+    display: none;
 }
 
 .category-link {
@@ -1786,7 +1794,7 @@ body:not(.home) .site-header {
     letter-spacing: 1px;
 }
 
-.info-item p, 
+.info-item p,
 .info-item a {
     font-size: 1rem;
     color: var(--color-text-muted);
@@ -1868,4 +1876,257 @@ body:not(.home) .site-header {
 .form-wrapper input[type="submit"]:hover,
 .form-wrapper button:hover {
     background-color: var(--color-muted-foreground);
+}
+
+/* ==========================================================================
+   WOOCOMMERCE SHOP STYLES
+   ========================================================================== */
+
+.pitucas-shop-page {
+    background-color: var(--color-background);
+}
+
+.shop-hero {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+/* Hide WooCommerce breadcrumbs and result count if needed, or style them */
+.woocommerce-breadcrumb {
+    display: none !important;
+}
+
+/* Grid Layout for Shop */
+.woocommerce .products.columns-4,
+.woocommerce ul.products {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 60px 40px !important;
+    margin: 40px 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+}
+
+.woocommerce ul.products::before,
+.woocommerce ul.products::after {
+    display: none !important;
+}
+
+.woocommerce ul.products li.product {
+    width: 100% !important;
+    margin: 0 !important;
+    float: none !important;
+    text-align: center;
+}
+
+/* Specific fix for images and links to match Home Page exactly */
+.product-image a {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.woocommerce ul.products li.product .product-image {
+    aspect-ratio: 1 / 2 !important;
+    position: relative !important;
+    overflow: hidden !important;
+    margin-bottom: 20px !important;
+    background-color: var(--color-light-gray) !important;
+}
+
+.woocommerce ul.products li.product .product-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+    transition: transform var(--transition-slow) !important;
+}
+
+.woocommerce ul.products li.product:hover .product-image img {
+    transform: scale(1.08) !important;
+}
+
+/* Pagination */
+.woocommerce-pagination {
+    margin-top: 80px;
+    padding-bottom: 40px;
+}
+
+.woocommerce-pagination ul {
+    border: none !important;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.woocommerce-pagination ul li {
+    border: none !important;
+}
+
+.woocommerce-pagination ul li a,
+.woocommerce-pagination ul li span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 45px;
+    height: 45px;
+    padding: 0 15px;
+    background: var(--color-white);
+    color: var(--color-primary);
+    font-size: 0.9rem;
+    font-family: var(--font-primary);
+    text-decoration: none;
+    border: 1px solid var(--color-border);
+    transition: all var(--transition-fast);
+}
+
+.woocommerce-pagination ul li span.current,
+.woocommerce-pagination ul li a:hover {
+    background: var(--color-primary) !important;
+    color: var(--color-white) !important;
+    border-color: var(--color-primary) !important;
+}
+
+/* Catalog Ordering and Result Count */
+.woocommerce-ordering {
+    margin-bottom: 40px !important;
+    float: right;
+}
+
+.woocommerce-ordering select {
+    padding: 10px 40px 10px 15px;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-white);
+    font-family: var(--font-primary);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+}
+
+.woocommerce-result-count {
+    margin-bottom: 40px !important;
+    float: left;
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
+    color: var(--color-muted-foreground);
+    line-height: 40px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .woocommerce ul.products {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .woocommerce ul.products {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 40px 20px !important;
+    }
+
+    .woocommerce-ordering,
+    .woocommerce-result-count {
+        float: none;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px !important;
+    }
+}
+
+/* =30===========================================
+   LEGAL PAGE STYLES
+   ============================================ */
+.legal-page {
+    background-color: var(--color-background);
+}
+
+.legal-page .legal-hero {
+    text-align: center;
+    padding: 100px 0 60px;
+}
+
+.legal-page .legal-hero .section-title {
+    font-size: 3.5rem;
+    margin-bottom: 0;
+}
+
+.legal-page-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+    color: var(--color-text);
+}
+
+.legal-page-content h2 {
+    font-family: var(--font-secondary);
+    font-size: 2rem;
+    margin: 60px 0 25px;
+    color: var(--color-primary);
+    font-weight: 400;
+}
+
+.legal-page-content h3 {
+    font-family: var(--font-secondary);
+    font-size: 1.5rem;
+    margin: 40px 0 20px;
+    color: var(--color-primary);
+    font-weight: 400;
+}
+
+.legal-page-content p {
+    margin-bottom: 25px;
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.legal-page-content ul, 
+.legal-page-content ol {
+    margin-bottom: 30px;
+    padding-left: 25px;
+}
+
+.legal-page-content li {
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+.legal-page-content strong {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.legal-page-content a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: opacity var(--transition-fast);
+}
+
+.legal-page-content a:hover {
+    opacity: 0.7;
+}
+
+/* Responsive Legal Page */
+@media (max-width: 768px) {
+    .legal-page .legal-hero {
+        padding: 60px 0 40px;
+    }
+    
+    .legal-page .legal-hero .section-title {
+        font-size: 2.5rem;
+    }
+    
+    .legal-page-content {
+        padding-bottom: 60px;
+    }
+    
+    .legal-page-content h2 {
+        font-size: 1.75rem;
+        margin-top: 40px;
+    }
 }
