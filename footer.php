@@ -61,9 +61,9 @@
                 <div class="social-section">
                     <h3 class="footer-title"><?php esc_html_e( 'SIGUENOS', 'nmh-pitucas' ); ?></h3>
                     <div class="social-links">
-                        <a href="<?php echo esc_url( $ig_url ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Instagram', 'nmh-pitucas' ); ?></a>
-                        <a href="<?php echo esc_url( $pt_url ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Pinterest', 'nmh-pitucas' ); ?></a>
-                        <a href="<?php echo esc_url( $tk_url ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'TikTok', 'nmh-pitucas' ); ?></a>
+                        <a href="<?php echo esc_url( $ig_url ); ?>" target="_blank" rel="noopener" aria-label="Instagram"><?php esc_html_e( 'Instagram', 'nmh-pitucas' ); ?></a>
+                        <a href="<?php echo esc_url( $pt_url ); ?>" target="_blank" rel="noopener" aria-label="Pinterest"><?php esc_html_e( 'Pinterest', 'nmh-pitucas' ); ?></a>
+                        <a href="<?php echo esc_url( $tk_url ); ?>" target="_blank" rel="noopener" aria-label="TikTok"><?php esc_html_e( 'TikTok', 'nmh-pitucas' ); ?></a>
                     </div>
                 </div>
             </div>

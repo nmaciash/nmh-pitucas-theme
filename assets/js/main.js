@@ -109,6 +109,18 @@
             $(window).on('scroll', debounce(updateLogo, 50));
         })();
         
+        // Accessibility fix: Add labels to TranslatePress language switcher links
+        if ($('.trp-language-switcher-container').length) {
+            $('.trp-language-switcher-container > a').each(function() {
+                var $link = $(this);
+                if (!$link.attr('aria-label')) {
+                    var href = $link.attr('href') || '/';
+                    var lang = href.indexOf('/en/') !== -1 ? 'English' : 'Español';
+                    $link.attr('aria-label', 'Cambiar idioma a ' + lang);
+                }
+            });
+        }
+        
     });
     
 })(jQuery);

@@ -18,6 +18,47 @@ body {
     padding: 0 20px;
 }
 
+/* Accessibility Helpers */
+.screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    width: 1px;
+    word-wrap: normal !important;
+}
+
+.skip-link {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    padding: 15px 25px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 10000;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: var(--shadow-lg);
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
+.skip-link:focus {
+    clip: auto;
+    clip-path: none;
+    height: auto;
+    width: auto;
+    overflow: visible;
+}
+
 .hide {
     display: none;
 }
@@ -560,7 +601,7 @@ body {
    ============================================ */
 .site-footer {
     background-color: var(--color-primary);
-    color: rgba(255, 255, 255, 0.8);
+    color: #f1f1f1;
     padding: 80px 0 40px;
     font-family: var(--font-primary);
 }
@@ -589,7 +630,7 @@ body {
     max-width: 280px;
     font-size: 0.95rem;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.7);
+    color: #d1cec7;
 }
 
 .footer-title {
@@ -612,7 +653,7 @@ body {
 }
 
 .footer-nav ul li a {
-    color: rgba(255, 255, 255, 0.7);
+    color: #d1cec7;
     text-decoration: none;
     font-size: 0.9rem;
     transition: color var(--transition-fast);
@@ -632,7 +673,7 @@ body {
 }
 
 .social-links a {
-    color: rgba(255, 255, 255, 0.7);
+    color: #d1cec7;
     text-decoration: none;
     font-size: 0.85rem;
     letter-spacing: 1px;
@@ -652,8 +693,7 @@ body {
 .footer-kit-digital img {
     max-width: 400px;
     height: auto;
-    opacity: 0.9;
-    filter: brightness(0.9);
+    filter: brightness(1);
 }
 
 @media (max-width: 640px) {
@@ -675,7 +715,7 @@ body {
 
 .footer-bottom p {
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: #b3b3b3;
     letter-spacing: 1px;
 }
 
@@ -727,12 +767,11 @@ body {
     --color-light-gray: #F0EBE3;
     --color-medium-gray: #E5DDD3;
     --color-dark-gray: #8A8078;
-    --color-text: #2C2825;
-    --color-text-muted: color-mix(in oklab, #2C2825 70%, transparent);
+    --color-text-muted: #4A4541;
     --color-background: #FAF8F5;
     --color-border: #E5DDD3;
     --color-muted: #F0EBE3;
-    --color-muted-foreground: #8A8078;
+    --color-muted-foreground: #615951;
 
     --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-secondary: 'Cormorant Garamond', Georgia, serif;
@@ -793,7 +832,7 @@ body {
     font-size: var(--font-size-xs);
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--color-secondary);
+    color: var(--color-muted-foreground);
     margin-bottom: var(--spacing-md);
     font-weight: 600;
 }
@@ -935,7 +974,6 @@ body {
     color: var(--color-white);
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    opacity: 0.8;
     margin-bottom: 16px;
 }
 
@@ -954,10 +992,9 @@ body {
     font-family: var(--font-primary);
     font-size: 0.875rem;
     font-weight: 400;
-    color: var(--color-white);
+    color: #e5e5e5;
     line-height: 1.6;
     letter-spacing: 0.15em;
-    opacity: 0.7;
     max-width: 400px;
     margin-bottom: 0;
 }
@@ -1055,7 +1092,7 @@ body {
 
 .view-all:hover {
     gap: 12px;
-    color: var(--color-secondary);
+    color: var(--color-primary);
 }
 
 .products-grid {
@@ -1472,9 +1509,14 @@ body {
 }
 
 .newsletter-description {
-    color: var(--color-text-light);
+    color: var(--color-text-muted);
     margin-bottom: var(--spacing-xl);
     font-size: var(--font-size-base);
+}
+
+.newsletter-input::placeholder {
+    color: #544d47;
+    opacity: 1;
 }
 
 .newsletter-form {

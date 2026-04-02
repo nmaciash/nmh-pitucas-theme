@@ -494,3 +494,48 @@ acf_add_local_field_group( array(
     'hide_on_screen' => '',
     'active' => 1,
 ) );
+acf_add_local_field_group( array(
+    'key' => 'group_seo_settings',
+    'title' => 'SEO & Meta Settings',
+    'fields' => array(
+        array(
+            'key' => 'field_seo_tabs',
+            'label' => 'SEO',
+            'name' => 'seo_tabs',
+            'type' => 'tab',
+            'placement' => 'top',
+        ),
+        array(
+            'key' => 'field_seo_description',
+            'label' => 'Meta Descripción',
+            'name' => 'seo_description',
+            'type' => 'textarea',
+            'instructions' => 'Descripción para buscadores (Google). Máximo 160 caracteres.',
+            'rows' => 3,
+            'maxlength' => 160,
+            'placeholder' => 'Ej: Descubre la nueva colección de Pitucas Moda femenina...',
+        ),
+    ),
+    'location' => array(
+        array(
+            array(
+                'param' => 'post_type',
+                'operator' => '==',
+                'value' => 'page',
+            ),
+        ),
+        array(
+            array(
+                'param' => 'post_type',
+                'operator' => '==',
+                'value' => 'post',
+            ),
+        ),
+    ),
+    'menu_order' => 100,
+    'position' => 'normal',
+    'style' => 'default',
+    'label_placement' => 'top',
+    'instruction_placement' => 'label',
+    'active' => 1,
+) );

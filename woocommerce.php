@@ -5,7 +5,7 @@
 
 get_header(); ?>
 
-<main id="main-content" class="pitucas-shop-page">
+<main id="primary" class="pitucas-shop-page">
 
     <section class="shop-hero section-padding">
         <div class="container">

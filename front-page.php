@@ -6,7 +6,7 @@
 
 get_header(); ?>
 
-<main id="main-content" class="pitucas-homepage">
+<main id="primary" class="pitucas-homepage">
 
     <!-- Hero Section -->
     <?php
@@ -63,8 +63,8 @@ get_header(); ?>
                         ?>
                         <div class="product-card gsap-fade-up">
                             <div class="product-image">
-                                <a href="<?php the_permalink(); ?>">
-                                    <?php echo get_the_post_thumbnail(get_the_ID(), 'full'); ?>
+                                <a href="<?php the_permalink(); ?>" aria-label="<?php the_title_attribute(); ?>">
+                                    <?php echo get_the_post_thumbnail(get_the_ID(), 'full', array( 'alt' => '' )); ?>
                                 </a>
                             </div>
                             <div class="product-info">
@@ -139,30 +139,30 @@ get_header(); ?>
         <div class="container">
             <div class="categories-grid gsap-stagger">
                 <div class="category-card gsap-hover">
-                    <a href="<?php echo esc_url($cat1_url); ?>" class="category-link">
+                    <a href="<?php echo esc_url($cat1_url); ?>" class="category-link" aria-label="Explorar categoría <?php echo esc_attr($cat1_name); ?>">
                         <div class="category-image">
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/cat01.webp"
-                                alt="<?php echo esc_attr($cat1_name); ?>">
+                                alt="">
                             <div class="category-overlay"></div>
                         </div>
                         <h3 class="category-name"><?php echo esc_html($cat1_name); ?></h3>
                     </a>
                 </div>
                 <div class="category-card gsap-hover">
-                    <a href="<?php echo esc_url($cat2_url); ?>" class="category-link">
+                    <a href="<?php echo esc_url($cat2_url); ?>" class="category-link" aria-label="Explorar categoría <?php echo esc_attr($cat2_name); ?>">
                         <div class="category-image">
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/cat02.webp"
-                                alt="<?php echo esc_attr($cat2_name); ?>">
+                                alt="">
                             <div class="category-overlay"></div>
                         </div>
                         <h3 class="category-name"><?php echo esc_html($cat2_name); ?></h3>
                     </a>
                 </div>
                 <div class="category-card gsap-hover">
-                    <a href="<?php echo esc_url($cat3_url); ?>" class="category-link">
+                    <a href="<?php echo esc_url($cat3_url); ?>" class="category-link" aria-label="Explorar categoría <?php echo esc_attr($cat3_name); ?>">
                         <div class="category-image">
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/cat03.webp"
-                                alt="<?php echo esc_attr($cat3_name); ?>">
+                                alt="">
                             <div class="category-overlay"></div>
                         </div>
                         <h3 class="category-name"><?php echo esc_html($cat3_name); ?></h3>
@@ -258,7 +258,8 @@ get_header(); ?>
                 </p>
 
                 <form class="newsletter-form" id="newsletter-form">
-                    <input type="email" name="newsletter_email" placeholder="Correo electrónico" required
+                    <label for="newsletter_email" class="screen-reader-text">Correo electrónico para suscripción</label>
+                    <input type="email" id="newsletter_email" name="newsletter_email" placeholder="Correo electrónico" required
                         class="newsletter-input">
                     <button type="submit" class="btn-primary">SUSCRIBIRME</button>
                 </form>
